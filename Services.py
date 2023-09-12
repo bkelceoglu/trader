@@ -73,7 +73,9 @@ class Services():
         Services.columns.append(Column ("Low Price", width=10))
         Services.columns.append(Column ("High Price", width=10))
         Services.columns.append(Column ("Diff Price", width=10))
-        Services.columns.append(Column ("RSI", width=20))
+        Services.columns.append(Column ("RSI", width=10))
+        Services.columns.append(Column ("RSI - D", width=10))
+        Services.columns.append(Column ("RSI - K", width=10))
         Services.dataList.clear()
         simpleTable = SimpleTable(Services.columns)
         open_price = Services.getOpenPrice(Services.target.symbol)
@@ -82,7 +84,9 @@ class Services():
         diff = high - low
         diff = round(diff, 2)
         rsi = round(Services.getRSI(symbol), 2)
-        Services.dataList.append( [Services.target.symbol, open_price, low, high, diff, rsi] )
+        rsid = round(Services.target.get_analysis().indicators.get("Stoch.D"), 2)
+        rsik = round(Services.target.get_analysis().indicators.get("Stoch.K"), 2)
+        Services.dataList.append( [Services.target.symbol, open_price, low, high, diff, rsi, rsid, rsik] )
         table = simpleTable.generate_table(Services.dataList)
         Utils.TablePrint.ansiPrint(table)
 

@@ -121,5 +121,22 @@ class Services():
         t = simpleTable.generate_table(Services.dataList)
         Utils.TablePrint.ansiPrint(t)
 
+    def getFromFollowedNoTable (fileName):
+        symbolList = Utils.ReadList.readFollowingList(fileName)
+        print(f'{"SYMBOL":<10}{"OPEN-PR":<10}{"LOW-PR":<10}{"HIGH-PR":<10}{"RSI":<10}{"RSI-D":<10}{"RSI-K":<10}{"RSI-DIFF":<10}')
+        print ('-'*80)
+        for s in symbolList:
+            Services.target.symbol = s.rstrip()
+            open_price = Services.getOpenPrice(s)
+            low = Services.getLowPrice(s)
+            high = Services.getHighPrice(s)
+            rsi = round( Services.getRSI(Services.target.symbol), 2 )
+            rsid = round( Services.target.get_analysis().indicators.get("Stoch.D"), 2 )
+            rsik = round( Services.target.get_analysis().indicators.get("Stoch.K"), 2 )
+            rsi_diff = round (rsid - rsik, 2)
+            print( f'{s.rstrip(): <10}{open_price: <10}{low: <10}{high: <10}{rsi: <10}{rsid: <10}{rsik: <10}{rsi_diff: <10}' )
+        print ('-'*80)
+
+
 
 

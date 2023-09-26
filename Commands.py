@@ -47,4 +47,5 @@ class CommandsAll(cmd2.Cmd):
 
     def do_get_from_following(self, args):
         """ create table from given following file """
-        Services.Services.getAllFromFollowed(args)
+        #Services.Services.getAllFromFollowed(args)
+        Services.Services.getFromFollowedNoTable(args)

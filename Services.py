@@ -154,9 +154,9 @@ class Services():
             rsik = round( Services.target.get_analysis().indicators.get("Stoch.K"), 2 )
             rsi_diff = round (rsik - rsid, 2)
             if rsi_diff > 0:
-                print( f'{bcolors.OKGREEN}{s.rstrip(): <10}{open_price: <10}{low: <10}{high: <10}{change: <10}{rsi: <10}{rsid: <10}{rsik: <10}{rsi_diff: <10}' )
+                print( f'{bcolors.OKGREEN}{s.rstrip(): <10}{open_price: <10}{low: <10}{high: <10}{change: <10}{rsi: <10}{rsid: <10}{rsik: <10}{rsi_diff: <10}{bcolors.ENDC}' )
             else:
-                print( f'{bcolors.FAIL}{s.rstrip(): <10}{open_price: <10}{low: <10}{high: <10}{change: <10}{rsi: <10}{rsid: <10}{rsik: <10}{rsi_diff: <10}' )
+                print( f'{bcolors.FAIL}{s.rstrip(): <10}{open_price: <10}{low: <10}{high: <10}{change: <10}{rsi: <10}{rsid: <10}{rsik: <10}{rsi_diff: <10}{bcolors.ENDC}' )
         print ('-'*80)
 
 
